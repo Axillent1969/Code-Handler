@@ -41,6 +41,8 @@
             this.onHoldList = new System.Windows.Forms.ListBox();
             this.lblCodeList = new System.Windows.Forms.Label();
             this.lblOnHold = new System.Windows.Forms.Label();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveDirectlyToTrashOnDblClickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +66,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(542, 24);
@@ -147,7 +150,22 @@
             this.lblOnHold.TabIndex = 7;
             this.lblOnHold.Text = "On Hold/Waiting for ok: (Double click to move to trash)";
             // 
-            // Form1
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.moveDirectlyToTrashOnDblClickToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.optionsToolStripMenuItem.Text = "Options...";
+            // 
+            // moveDirectlyToTrashOnDblClickToolStripMenuItem
+            // 
+            this.moveDirectlyToTrashOnDblClickToolStripMenuItem.Name = "moveDirectlyToTrashOnDblClickToolStripMenuItem";
+            this.moveDirectlyToTrashOnDblClickToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.moveDirectlyToTrashOnDblClickToolStripMenuItem.Text = "Move directly to trash on Dbl Click";
+            this.moveDirectlyToTrashOnDblClickToolStripMenuItem.Click += new System.EventHandler(this.moveDirectlyToTrashOnDblClickToolStripMenuItem_Click);
+            // 
+            // CodeHandlerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -162,7 +180,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "CodeHandlerForm";
             this.Text = "CC Code Handler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.statusStrip1.ResumeLayout(false);
@@ -188,6 +206,8 @@
         private System.Windows.Forms.ListBox onHoldList;
         private System.Windows.Forms.Label lblCodeList;
         private System.Windows.Forms.Label lblOnHold;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moveDirectlyToTrashOnDblClickToolStripMenuItem;
     }
 }
 

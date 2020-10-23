@@ -132,10 +132,19 @@ namespace Code_Handler
                 {
                     onHoldList.Enabled = true;
                     lblOnHold.Enabled = true;
-                    lblCodeList.Text = "Available for use: (Double click to move to 'On hold'-list)";
+                    lblCodeList.Text = GetCodeListHeadline();
                 }
                 statusText.Text = "Selected '" + e.Node.Text + "'.";
             }
+        }
+
+        private string GetCodeListHeadline()
+        {
+            if ( moveDirectlyToTrashOnDblClickToolStripMenuItem.Checked )
+            {
+                return "Available for use: (Double click to move to trash)";
+            }
+            return "Available for use: (Double click to move to 'On hold'-list)";
         }
 
         private void codeList_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -163,8 +172,14 @@ namespace Code_Handler
                 }
             } else
             {
-                code.OnHold = true;
-                onHoldList.Items.Add(itemClicked);
+                if ( moveDirectlyToTrashOnDblClickToolStripMenuItem.Checked )
+                {
+                    code.IsDeleted = true;
+                } else
+                {
+                    code.OnHold = true;
+                    onHoldList.Items.Add(itemClicked);
+                }
                 senderList.Items.Remove(itemClicked);
             }
         }
@@ -297,6 +312,16 @@ namespace Code_Handler
             {
                 onHoldSelectionRestore = "";
             }
+        }
+
+        private void moveDirectlyToTrashOnDblClickToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem itm = (ToolStripMenuItem)sender;
+            itm.Checked = !itm.Checked;
+
+            onHoldList.Enabled = !onHoldList.Enabled;
+            lblOnHold.Enabled = !lblOnHold.Enabled;
+            lblCodeList.Text = GetCodeListHeadline();
         }
     }
 }
